@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Home from "./index";
 
 
@@ -29,16 +29,31 @@ describe("When Form is created", () => {
 });
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
-  });
+  it("a list of events is displayed", async () => {
+    render(< Home />)
+    expect(screen.getByTestId("listEvents")).toBeInTheDocument()
+    waitFor(() => {
+      expect(screen.getByText("#DigitonPARIS")).toBeInTheDocument()
+    })
+  })
+
   it("a list of people is displayed", () => {
-    // to implement
+     render(< Home />)
+    expect(screen.getByTestId("listOfPeople")).toBeInTheDocument()
+    expect(screen.getByText("Samira")).toBeInTheDocument()
+    expect(screen.getByText('Christine')).toBeInTheDocument()
   });
   it("a footer is displayed", () => {
-    // to implement
+    render(< Home />)
+    expect(screen.getByTestId("footer")).toBeInTheDocument()
+    expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument()
   });
   it("an event card, with the last event, is displayed", () => {
-    // to implement
-  });
+    render(< Home />)
+    waitFor(() => {
+      expect(screen.getByTestId("lastEvent")).toBeInTheDocument()
+      expect(screen.getByRole('date')).toBeInTheDocument()
+    })
+  })
+
 });

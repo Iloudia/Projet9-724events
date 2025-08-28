@@ -11,7 +11,7 @@ describe("When Modal data is created", () => {
         {() => null}
       </Modal>
     );
-    expect(screen.getByText("modal content")).toBeInTheDocument();x
+    expect(screen.getByText("modal content")).toBeInTheDocument();
   });
   describe("and a click is triggered to display the modal", () => {
     it("the content of modal is displayed", async () => {
