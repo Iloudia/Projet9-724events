@@ -16,7 +16,8 @@ const Slider = () => {
       if (byDateDesc?.length) {
         setIndex(index < byDateDesc.length - 1 ? index + 1 : 0);
       }
-    }, 5000);
+    }, 5000
+    );
 
     return () => clearTimeout(timer);
   }, [index, byDateDesc]);
@@ -39,19 +40,19 @@ const Slider = () => {
         </div>
       ))}
 
-  <div className="SlideCard__paginationContainer">
-  <div className="SlideCard__pagination">
-    {byDateDesc?.map((event, radioIdx) => (
-      <input
-        key={event.title}
-        type="radio"
-        name="radio-button"
-        checked={index === radioIdx}
-        onChange={() => setIndex(radioIdx)}
-      />
-    ))}
-  </div>
-</div>
+      <div className="SlideCard__paginationContainer">
+        <div className="SlideCard__pagination">
+          {byDateDesc?.map((event, radioIdx) => (
+            <input
+              key={event.title}
+              type="radio"
+              name="radio-button"
+              checked={index === radioIdx}
+              onChange={() => setIndex(radioIdx)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
